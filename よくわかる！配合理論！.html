@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>よくわかる！配合理論！ - ウイニングポスト</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'BIZ UDPGothic', sans-serif;
+      background: #0f1923;
+      color: #e0e6ed;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1a472a 0%, #2d6a4f 50%, #1a472a 100%);
+      padding: 60px 20px 50px;
+      text-align: center;
+      border-bottom: 4px solid #52b788;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 Q35 15 30 25 Q25 15 30 5Z' fill='%2352b78815'/%3E%3C/svg%3E") repeat;
+      opacity: 0.3;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      color: #fff;
+      position: relative;
+      letter-spacing: 0.05em;
+    }
+    .hero h1 span { color: #95d5b2; }
+    .hero p {
+      color: #b7e4c7;
+      margin-top: 10px;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    .nav-toc {
+      background: #162029;
+      border: 1px solid #2a3a48;
+      border-radius: 12px;
+      margin: -30px auto 40px;
+      padding: 24px 28px;
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+    .nav-toc h2 {
+      font-size: 0.85rem;
+      color: #52b788;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .nav-toc ol {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 20px;
+    }
+    .nav-toc li { counter-increment: toc; }
+    .nav-toc a {
+      color: #a8c4d8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: block;
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .nav-toc a::before {
+      content: counter(toc) ". ";
+      color: #52b788;
+      font-weight: 700;
+    }
+    .nav-toc a:hover { color: #95d5b2; }
+
+    section {
+      margin-bottom: 48px;
+    }
+
+    h2.section-title {
+      font-size: 1.4rem;
+      color: #52b788;
+      border-left: 4px solid #52b788;
+      padding-left: 14px;
+      margin-bottom: 24px;
+    }
+
+    h3.sub-title {
+      font-size: 1.1rem;
+      color: #95d5b2;
+      margin: 28px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #2a3a48;
+    }
+
+    p { margin-bottom: 14px; }
+
+    .card {
+      background: #162029;
+      border: 1px solid #2a3a48;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card-accent {
+      border-left: 4px solid #52b788;
+    }
+
+    .card-warn {
+      border-left: 4px solid #e9c46a;
+      background: #1a2230;
+    }
+
+    .qa {
+      margin-bottom: 16px;
+    }
+    .qa-q {
+      font-weight: 700;
+      color: #e9c46a;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .qa-a {
+      color: #c0cdd8;
+      padding-left: 16px;
+    }
+
+    ul, ol {
+      margin: 8px 0 14px 20px;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+
+    .step-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      counter-reset: step;
+    }
+    .step-list li {
+      counter-increment: step;
+      background: #162029;
+      border: 1px solid #2a3a48;
+      border-radius: 8px;
+      padding: 14px 18px 14px 54px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .step-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 16px;
+      top: 13px;
+      background: #52b788;
+      color: #0f1923;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+    .badge-gold { background: #e9c46a; color: #1a1a1a; }
+    .badge-silver { background: #a8b2bd; color: #1a1a1a; }
+    .badge-green { background: #52b788; color: #0f1923; }
+    .badge-blue { background: #4895ef; color: #fff; }
+
+    .img-wrap {
+      margin: 16px 0;
+      text-align: center;
+    }
+    .img-wrap img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid #2a3a48;
+    }
+    .img-wrap .caption {
+      font-size: 0.8rem;
+      color: #7a8a9a;
+      margin-top: 6px;
+    }
+
+    .divider {
+      text-align: center;
+      color: #3a4a5a;
+      margin: 24px 0;
+      font-size: 1.2rem;
+      letter-spacing: 0.5em;
+    }
+
+    table.factor-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 0.9rem;
+    }
+    table.factor-table th {
+      background: #1e3040;
+      color: #95d5b2;
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 2px solid #52b788;
+    }
+    table.factor-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #2a3a48;
+    }
+    table.factor-table tr:hover td {
+      background: #1a2838;
+    }
+
+    .highlight {
+      color: #e9c46a;
+      font-weight: 700;
+    }
+    .hl-green {
+      color: #52b788;
+      font-weight: 700;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .tag {
+      background: #1e3040;
+      color: #a8c4d8;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      border: 1px solid #2a3a48;
+    }
+
+    .example-block {
+      background: #121c26;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 16px 0;
+      border: 1px dashed #3a4a5a;
+    }
+    .example-block .label {
+      font-size: 0.75rem;
+      color: #52b788;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+
+    .cta-link {
+      display: inline-block;
+      background: #52b788;
+      color: #0f1923;
+      padding: 10px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+    .cta-link:hover { background: #95d5b2; }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #4a5a6a;
+      font-size: 0.8rem;
+      border-top: 1px solid #2a3a48;
+    }
+
+    .think-block {
+      background: linear-gradient(135deg, #1a2838, #162029);
+      border: 1px solid #3a4a5a;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    .think-block::before {
+      content: '考えてみよう';
+      display: block;
+      font-size: 0.8rem;
+      color: #e9c46a;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .answer-block {
+      background: #162029;
+      border-left: 4px solid #4895ef;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 12px 0;
+    }
+    .answer-block::before {
+      content: '答え';
+      display: block;
+      font-size: 0.8rem;
+      color: #4895ef;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.5rem; }
+      .nav-toc ol { grid-template-columns: 1fr; }
+      .container { padding: 0 14px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>よくわかる！<span>配合理論</span>！</h1>
+  <p>ウイニングポスト 初心者・ライトユーザー向けガイド</p>
+</div>
+
+<div class="container">
+
+  <nav class="nav-toc">
+    <h2>もくじ</h2>
+    <ol>
+      <li><a href="#why">なぜ配合理論が必要？</a></li>
+      <li><a href="#simple">かんたん！配合理論</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+      <li><a href="#example">事例紹介</a></li>
+      <li><a href="#mother">良い母馬の選び方</a></li>
+      <li><a href="#factor">能力因子のしくみ</a></li>
+      <li><a href="#factor-example">因子活性の実例</a></li>
+      <li><a href="#more">もっと詳しく知りたい人へ</a></li>
+    </ol>
+  </nav>
+
+  <!-- ========== 1. なぜ配合理論が必要？ ========== -->
+  <section id="why">
+    <h2 class="section-title">なぜ配合理論が必要？</h2>
+
+    <div class="card card-accent">
+      <div class="qa">
+        <div class="qa-q">Q. そもそもなぜ配合理論が重要なの？</div>
+        <div class="qa-a">勝てる馬が<strong class="highlight">継続的に</strong>生まれる確率を高めるためです。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="qa">
+        <div class="qa-q">Q. 勝てる馬が生まれる確率って？</div>
+        <div class="qa-a">
+          絶対に強い馬が生まれる方法はありません。あくまで<strong>確率を高める＝ガチャの確率を上げる</strong>ことしかできません。<br>
+          だから繁殖牝馬をたくさん持って、<strong>試行回数（出産数）を増やす</strong>ことも大切です。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="qa">
+        <div class="qa-q">Q. 「継続的に」って？</div>
+        <div class="qa-a">
+          <ul>
+            <li>実は<strong>今すぐ強い馬が欲しいだけなら、配合理論はなくてもOK</strong>。爆発力の高い種牡馬をつければ大丈夫です。</li>
+            <li>5年後・10年後も強い馬を出し続けたいなら、配合理論が必要になります。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-warn">
+      <p><strong>まとめ：</strong>「今だけ強い馬が欲しい」→ 爆発力重視でOK。「子孫をずっと繁栄させたい」→ 配合理論を学ぼう！</p>
+    </div>
+  </section>
+
+  <!-- ========== 2. かんたん！配合理論 ========== -->
+  <section id="simple">
+    <h2 class="section-title">かんたん！配合理論</h2>
+
+    <h3 class="sub-title">前提条件</h3>
+    <ul>
+      <li><strong class="hl-green">危険度が 0〜2</strong> であること</li>
+      <li>種牡馬の芝・ダート適性が、産みたい子供の用途と合っていること</li>
+    </ul>
+
+    <h3 class="sub-title">基本の配合ルール</h3>
+    <ol class="step-list">
+      <li>
+        <strong>祖父・祖母の親系統が被らないようにする</strong><br>
+        <span style="font-size:0.85rem;color:#7a8a9a;">※ノーザンダンサーは広く浸透しているので、被っても仕方ない場合があります</span>
+      </li>
+      <li>
+        <strong>曽祖父・曾祖母の代までに<span class="badge badge-gold">金因子</span>と<span class="badge badge-silver">銀因子</span>が揃っている</strong>
+      </li>
+    </ol>
+
+    <div class="card card-accent">
+      <p>まずはこの2つを目指しましょう！ 難しければどちらか片方でもOKです。</p>
+    </div>
+
+    <h3 class="sub-title">努力目標</h3>
+    <ol class="step-list" style="counter-reset: step 2;">
+      <li><strong>「スピード」因子をできる限り多くする</strong></li>
+      <li><strong>芝適性の国マークを日本・アメリカで半分以上にする</strong>（芝の馬を作る場合）</li>
+    </ol>
+  </section>
+
+  <!-- ========== 3. よくある質問 ========== -->
+  <section id="faq">
+    <h2 class="section-title">よくある質問</h2>
+
+    <div class="card">
+      <div class="qa">
+        <div class="qa-q">Q. 〇〇（好きな種牡馬）で強い馬を作りたい！</div>
+        <div class="qa-a">爆発力の高い種牡馬をつければOK。この場合は配合理論をあまり気にしなくて大丈夫です。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="qa">
+        <div class="qa-q">Q. 母馬に因子がない…</div>
+        <div class="qa-a">
+          流行りの種牡馬をつけましょう！<br>
+          <div class="tag-row">
+            <span class="tag">ディープインパクト</span>
+            <span class="tag">サンデーサイレンス</span>
+            <span class="tag">キングカメハメハ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="qa">
+        <div class="qa-q">Q. 流行りの馬の血が入っていて何もつけられない…</div>
+        <div class="qa-a">
+          因子が少なくても、流行っていない馬をつけましょう。
+          <div class="tag-row">
+            <span class="tag">カルストンライトオ</span>
+            <span class="tag">バゴ</span>
+            <span class="tag">トウカイテイオー</span>
+            <span class="tag">ワイルドラッシュ</span>
+            <span class="tag">ハービンジャー</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. 事例紹介 ========== -->
+  <section id="example">
+    <h2 class="section-title">事例紹介</h2>
+
+    <p>ここでは繁殖牝馬<strong>シュガーハート</strong>を例に、実際の配合の考え方を見ていきましょう。</p>
+
+    <div class="img-wrap">
+      <img src="https://i.imgur.com/H5PQzgz.png" alt="シュガーハート 血統表" loading="lazy">
+      <div class="caption">シュガーハートの血統表</div>
+    </div>
+    <div class="img-wrap">
+      <img src="https://i.imgur.com/GBwswUZ.png" alt="シュガーハート 親系統" loading="lazy">
+      <div class="caption">シュガーハートの親系統</div>
+    </div>
+
+    <div class="think-block">
+      <p>この馬にはどんな種牡馬をつけるのが良いでしょう？</p>
+    </div>
+
+    <div class="answer-block">
+      <p>この馬の親系統は<strong>ナスルーラ・ボールドルーラー・ノーザンダンサー</strong>の3種類です。<br>
+      金因子は0個、銀因子は3つありますが、すべて3代前（曽祖父母）にあります。</p>
+      <p>つまり、最適な種牡馬の条件は：</p>
+      <ul>
+        <li>ナスルーラ・ボールドルーラー・ノーザンダンサー<strong>以外</strong>の親系統</li>
+        <li><span class="badge badge-gold">金</span><span class="badge badge-silver">銀</span>因子が<strong>2代前まで</strong>にある</li>
+      </ul>
+    </div>
+
+    <p>これを踏まえた良い配合例がこちら：</p>
+
+    <div class="img-wrap">
+      <img src="https://i.imgur.com/06jmmdu.png" alt="シュガーハート × グラスワンダー" loading="lazy">
+      <div class="caption">シュガーハート × グラスワンダー ― スピード因子も豊富で好相性</div>
+    </div>
+  </section>
+
+  <!-- ========== 5. 良い母馬の選び方 ========== -->
+  <section id="mother">
+    <h2 class="section-title">良い母馬の選び方</h2>
+
+    <p>考え方は父馬選びとほぼ同じです。</p>
+
+    <ol class="step-list">
+      <li><strong>使いたい種牡馬と親系統が被っていない</strong>母馬を選ぶ</li>
+      <li>繁殖牝馬の<strong>父親に<span class="badge badge-gold">金</span>または<span class="badge badge-silver">銀</span>因子</strong>が付いている<br>
+        <span style="font-size:0.85rem;color:#7a8a9a;">→ 母父に因子があると爆発力にボーナスが付きます</span>
+      </li>
+    </ol>
+
+    <div class="card card-accent">
+      <p>例えば<strong>アドマイヤグルーヴ</strong>のように、母父に因子がしっかりある繁殖牝馬は優秀です。</p>
+    </div>
+  </section>
+
+  <!-- ========== 6. 能力因子のしくみ ========== -->
+  <section id="factor">
+    <h2 class="section-title">能力因子のしくみ</h2>
+
+    <div class="card">
+      <div class="qa">
+        <div class="qa-q">Q. 能力因子って何？</div>
+        <div class="qa-a">
+          血統表に表示されているスピード・パワー・瞬発力などの印のこと。特定の条件を満たすと子供に継承され、能力が強化されます。
+        </div>
+      </div>
+    </div>
+
+    <p>能力因子は<strong>2段階</strong>まで強化できます。</p>
+
+    <table class="factor-table">
+      <thead>
+        <tr><th>段階</th><th>名称</th><th>効果</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1段階</td><td><span class="hl-green">小活性</span></td><td>対応する能力が少し上がる</td></tr>
+        <tr><td>2段階</td><td><span class="highlight">大活性</span></td><td>対応する能力が大きく上がる</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-title">小活性（1段階強化）の条件</h3>
+    <p>以下のいずれかを満たすと発動します。</p>
+    <ul>
+      <li>親が<strong>3代連続</strong>で同じ能力因子を持っている</li>
+      <li><strong>父と母</strong>が同じ能力因子を持っている</li>
+      <li><strong>父と母父</strong>（母の父）が同じ能力因子を持っている</li>
+      <li><strong>父父と母父</strong>が同じ能力因子を持っている</li>
+    </ul>
+
+    <h3 class="sub-title">大活性（2段階強化）の条件</h3>
+    <ul>
+      <li>親が<strong>4代連続</strong>で同じ因子を持っている</li>
+      <li>小活性の条件を<strong>2つ同時に</strong>満たしている</li>
+    </ul>
+
+    <h3 class="sub-title">特殊条件：3代前の牡馬による活性化</h3>
+    <div class="card">
+      <table class="factor-table">
+        <thead>
+          <tr><th>条件</th><th>効果</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3代前の牡馬<strong>3頭</strong>が同じ因子</td>
+            <td>共通因子が<span class="hl-green">小活性</span>、残り1頭の因子もすべて<span class="hl-green">小活性</span></td>
+          </tr>
+          <tr>
+            <td>3代前の牡馬<strong>4頭</strong>が同じ因子</td>
+            <td>共通因子が<span class="highlight">大活性</span>、各馬のその他因子もすべて<span class="hl-green">小活性</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========== 7. 因子活性の実例 ========== -->
+  <section id="factor-example">
+    <h2 class="section-title">因子活性の実例</h2>
+
+    <p>先ほどのシュガーハートの配合で、因子の活性化を確認してみましょう。</p>
+
+    <div class="img-wrap">
+      <img src="https://i.imgur.com/LDYOMFc.png" alt="シュガーハート × グラスワンダー（能力因子表示）" loading="lazy">
+      <div class="caption">配合時の能力因子の表示</div>
+    </div>
+
+    <div class="card card-accent">
+      <p><strong>この配合で発生する活性化：</strong></p>
+      <ul>
+        <li>父親が<strong>4代連続でスピード因子</strong> → <span class="highlight">スピード大活性</span></li>
+        <li>父と母父・父父と母父でスピードが共通 → さらにスピードを補強</li>
+        <li>3代前のうち3頭がスピード共通、残り1頭がパワー → <span class="hl-green">パワー小活性</span></li>
+      </ul>
+    </div>
+
+    <div class="divider">* * *</div>
+
+    <div class="think-block">
+      <p>この母馬にとって、<strong>能力因子の観点からもっと良い組み合わせ</strong>はないでしょうか？</p>
+    </div>
+
+    <p>シュガーハートにとって望ましい種牡馬の因子条件：</p>
+    <ul>
+      <li>父親か父父に<strong>スピード因子</strong>または<strong>勝負根性因子</strong>がある</li>
+      <li>父親に<strong>スタミナ因子</strong>がある</li>
+      <li>3代前に<strong>スピード・瞬発・パワー</strong>のどれかを持つ</li>
+    </ul>
+
+    <p>この条件に合う例：</p>
+
+    <div class="img-wrap">
+      <img src="https://i.imgur.com/FMhbrDJ.png" alt="シュガーハート × トウカイテイオー" loading="lazy">
+      <div class="caption">シュガーハート × トウカイテイオー</div>
+    </div>
+
+    <div class="card card-accent">
+      <p><strong>この配合で活性化する能力：</strong></p>
+      <ul>
+        <li>父と母父、父父と母父で勝負根性が小活性 × 2 → <span class="highlight">勝負根性 大活性</span></li>
+        <li>父父と母父でスピードが共通 → <span class="hl-green">スピード 小活性</span></li>
+        <li>3代前で瞬発力が3頭共通 → <span class="hl-green">瞬発力 小活性</span> + <span class="hl-green">パワー 小活性</span></li>
+      </ul>
+    </div>
+
+    <div class="card card-warn">
+      <p>しかし、今度は<span class="badge badge-gold">金</span><span class="badge badge-silver">銀</span>因子が足りなくなりました。<br>
+      <strong>能力因子を優先するか、金銀因子を優先するか</strong> ― この折り合いをどうつけるかが配合の奥深さです。</p>
+    </div>
+  </section>
+
+  <!-- ========== 8. もっと詳しく ========== -->
+  <section id="more">
+    <h2 class="section-title">もっと詳しく知りたい人へ</h2>
+
+    <p>もっと深い配合理論（インブリード、ニックス、SP/ST系配合など）を知りたい方は、以下のリソースがおすすめです。</p>
+
+    <div class="card">
+      <p><strong>動画で学ぶ</strong></p>
+      <a class="cta-link" href="https://www.nicovideo.jp/watch/sm45533935" target="_blank" rel="noopener noreferrer nofollow">ニコニコ動画で解説を見る →</a>
+    </div>
+
+    <div class="card" style="margin-top: 16px;">
+      <p><strong>テキストで学ぶ</strong></p>
+      <a class="cta-link" href="https://wikiwiki.jp/sppenpen/%E9%85%8D%E5%90%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" target="_blank" rel="noopener noreferrer nofollow">配合について - Wiki →</a>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <p>このページは検索エンジンにインデックスされません。</p>
+  <p>ウイニングポスト 配合理論 ライトユーザー向けガイド</p>
+</footer>
+
+</body>
+</html>
