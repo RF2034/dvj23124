@@ -140,11 +140,14 @@
       font-weight: 700;
       color: #e9c46a;
       font-size: 1rem;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .qa-a {
-      color: #c0cdd8;
+      color: #c8d5e0;
       padding-left: 16px;
+    }
+    .qa-a p {
+      margin-bottom: 10px;
     }
 
     ul, ol {
@@ -186,6 +189,12 @@
       font-size: 0.85rem;
     }
 
+    .note {
+      font-size: 0.85rem;
+      color: #9ab0c4;
+      margin-top: 4px;
+    }
+
     .badge {
       display: inline-block;
       padding: 2px 10px;
@@ -207,16 +216,65 @@
       max-width: 100%;
       border-radius: 8px;
       border: 1px solid #2a3a48;
+      cursor: zoom-in;
+      transition: opacity 0.2s;
+    }
+    .img-wrap img:hover {
+      opacity: 0.85;
     }
     .img-wrap .caption {
-      font-size: 0.8rem;
-      color: #7a8a9a;
-      margin-top: 6px;
+      font-size: 0.82rem;
+      color: #9ab0c4;
+      margin-top: 8px;
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-overlay img {
+      max-width: 95vw;
+      max-height: 92vh;
+      border-radius: 8px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      object-fit: contain;
+    }
+    .modal-close {
+      position: fixed;
+      top: 16px;
+      right: 24px;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1001;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      border: none;
+      transition: background 0.2s;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(255,255,255,0.25);
     }
 
     .divider {
       text-align: center;
-      color: #3a4a5a;
+      color: #4a5a6a;
       margin: 24px 0;
       font-size: 1.2rem;
       letter-spacing: 0.5em;
@@ -260,26 +318,29 @@
     }
     .tag {
       background: #1e3040;
-      color: #a8c4d8;
+      color: #b8d0e4;
       padding: 4px 12px;
       border-radius: 6px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       border: 1px solid #2a3a48;
     }
 
-    .example-block {
-      background: #121c26;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 16px 0;
-      border: 1px dashed #3a4a5a;
+    .video-embed {
+      position: relative;
+      width: 100%;
+      max-width: 640px;
+      margin: 16px auto;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #2a3a48;
     }
-    .example-block .label {
-      font-size: 0.75rem;
-      color: #52b788;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 10px;
+    .video-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     .cta-link {
@@ -298,7 +359,7 @@
     .footer {
       text-align: center;
       padding: 40px 20px;
-      color: #4a5a6a;
+      color: #7a8a9a;
       font-size: 0.8rem;
       border-top: 1px solid #2a3a48;
     }
@@ -334,6 +395,26 @@
       color: #4895ef;
       font-weight: 700;
       margin-bottom: 6px;
+    }
+
+    .summary-box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .summary-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .summary-label {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .summary-arrow {
+      color: #52b788;
+      font-weight: 700;
     }
 
     @media (max-width: 600px) {
@@ -381,8 +462,9 @@
       <div class="qa">
         <div class="qa-q">Q. 勝てる馬が生まれる確率って？</div>
         <div class="qa-a">
-          絶対に強い馬が生まれる方法はありません。あくまで<strong>確率を高める＝ガチャの確率を上げる</strong>ことしかできません。<br>
-          だから繁殖牝馬をたくさん持って、<strong>試行回数（出産数）を増やす</strong>ことも大切です。
+          <p>絶対に強い馬が生まれる方法はありません。</p>
+          <p>あくまで<strong>確率を高める＝ガチャの確率を上げる</strong>ことしかできません。</p>
+          <p>だから繁殖牝馬をたくさん持って、<strong>試行回数（出産数）を増やす</strong>ことも大切です。</p>
         </div>
       </div>
     </div>
@@ -391,16 +473,27 @@
       <div class="qa">
         <div class="qa-q">Q. 「継続的に」って？</div>
         <div class="qa-a">
-          <ul>
-            <li>実は<strong>今すぐ強い馬が欲しいだけなら、配合理論はなくてもOK</strong>。爆発力の高い種牡馬をつければ大丈夫です。</li>
-            <li>5年後・10年後も強い馬を出し続けたいなら、配合理論が必要になります。</li>
-          </ul>
+          <p><strong>今すぐ強い馬が欲しいだけ</strong>なら、配合理論はなくてもOKです。<br>
+          爆発力の高い種牡馬をつければ大丈夫です。</p>
+          <p><strong>5年後・10年後も</strong>強い馬を出し続けたいなら、配合理論が必要になります。</p>
         </div>
       </div>
     </div>
 
     <div class="card card-warn">
-      <p><strong>まとめ：</strong>「今だけ強い馬が欲しい」→ 爆発力重視でOK。「子孫をずっと繁栄させたい」→ 配合理論を学ぼう！</p>
+      <p><strong>まとめ</strong></p>
+      <div class="summary-box">
+        <div class="summary-row">
+          <span class="summary-label">「今だけ強い馬が欲しい」</span>
+          <span class="summary-arrow">→</span>
+          <span>爆発力重視でOK</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">「子孫をずっと繁栄させたい」</span>
+          <span class="summary-arrow">→</span>
+          <span>配合理論を学ぼう！</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -417,8 +510,8 @@
     <h3 class="sub-title">基本の配合ルール</h3>
     <ol class="step-list">
       <li>
-        <strong>祖父・祖母の親系統が被らないようにする</strong><br>
-        <span style="font-size:0.85rem;color:#7a8a9a;">※ノーザンダンサーは広く浸透しているので、被っても仕方ない場合があります</span>
+        <strong>祖父・祖母の親系統が被らないようにする</strong>
+        <div class="note">※ノーザンダンサーは広く浸透しているので、被っても仕方ない場合があります</div>
       </li>
       <li>
         <strong>曽祖父・曾祖母の代までに<span class="badge badge-gold">金因子</span>と<span class="badge badge-silver">銀因子</span>が揃っている</strong>
@@ -426,13 +519,17 @@
     </ol>
 
     <div class="card card-accent">
-      <p>まずはこの2つを目指しましょう！ 難しければどちらか片方でもOKです。</p>
+      <p>まずはこの2つを目指しましょう！<br>
+      難しければどちらか片方でもOKです。</p>
     </div>
 
     <h3 class="sub-title">努力目標</h3>
     <ol class="step-list" style="counter-reset: step 2;">
       <li><strong>「スピード」因子をできる限り多くする</strong></li>
-      <li><strong>芝適性の国マークを日本・アメリカで半分以上にする</strong>（芝の馬を作る場合）</li>
+      <li>
+        <strong>芝適性の国マークを日本・アメリカで半分以上にする</strong>
+        <div class="note">※芝の馬を作る場合のみ</div>
+      </li>
     </ol>
   </section>
 
@@ -443,7 +540,10 @@
     <div class="card">
       <div class="qa">
         <div class="qa-q">Q. 〇〇（好きな種牡馬）で強い馬を作りたい！</div>
-        <div class="qa-a">爆発力の高い種牡馬をつければOK。この場合は配合理論をあまり気にしなくて大丈夫です。</div>
+        <div class="qa-a">
+          <p>爆発力の高い種牡馬をつければOKです。</p>
+          <p>この場合は配合理論をあまり気にしなくて大丈夫です。</p>
+        </div>
       </div>
     </div>
 
@@ -451,7 +551,7 @@
       <div class="qa">
         <div class="qa-q">Q. 母馬に因子がない…</div>
         <div class="qa-a">
-          流行りの種牡馬をつけましょう！<br>
+          <p>流行りの種牡馬をつけましょう！</p>
           <div class="tag-row">
             <span class="tag">ディープインパクト</span>
             <span class="tag">サンデーサイレンス</span>
@@ -465,7 +565,7 @@
       <div class="qa">
         <div class="qa-q">Q. 流行りの馬の血が入っていて何もつけられない…</div>
         <div class="qa-a">
-          因子が少なくても、流行っていない馬をつけましょう。
+          <p>因子が少なくても、流行っていない馬をつけましょう。</p>
           <div class="tag-row">
             <span class="tag">カルストンライトオ</span>
             <span class="tag">バゴ</span>
@@ -485,12 +585,12 @@
     <p>ここでは繁殖牝馬<strong>シュガーハート</strong>を例に、実際の配合の考え方を見ていきましょう。</p>
 
     <div class="img-wrap">
-      <img src="https://i.imgur.com/H5PQzgz.png" alt="シュガーハート 血統表" loading="lazy">
-      <div class="caption">シュガーハートの血統表</div>
+      <img src="https://i.imgur.com/H5PQzgz.png" alt="シュガーハート 血統表" loading="lazy" onclick="openModal(this)">
+      <div class="caption">シュガーハートの血統表（クリックで拡大）</div>
     </div>
     <div class="img-wrap">
-      <img src="https://i.imgur.com/GBwswUZ.png" alt="シュガーハート 親系統" loading="lazy">
-      <div class="caption">シュガーハートの親系統</div>
+      <img src="https://i.imgur.com/GBwswUZ.png" alt="シュガーハート 親系統" loading="lazy" onclick="openModal(this)">
+      <div class="caption">シュガーハートの親系統（クリックで拡大）</div>
     </div>
 
     <div class="think-block">
@@ -498,20 +598,20 @@
     </div>
 
     <div class="answer-block">
-      <p>この馬の親系統は<strong>ナスルーラ・ボールドルーラー・ノーザンダンサー</strong>の3種類です。<br>
-      金因子は0個、銀因子は3つありますが、すべて3代前（曽祖父母）にあります。</p>
+      <p>この馬の親系統は<strong>ナスルーラ・ボールドルーラー・ノーザンダンサー</strong>の3種類です。</p>
+      <p>金因子は0個、銀因子は3つありますが、すべて3代前（曽祖父母）にあります。</p>
       <p>つまり、最適な種牡馬の条件は：</p>
       <ul>
         <li>ナスルーラ・ボールドルーラー・ノーザンダンサー<strong>以外</strong>の親系統</li>
-        <li><span class="badge badge-gold">金</span><span class="badge badge-silver">銀</span>因子が<strong>2代前まで</strong>にある</li>
+        <li><span class="badge badge-gold">金</span> <span class="badge badge-silver">銀</span> 因子が<strong>2代前まで</strong>にある</li>
       </ul>
     </div>
 
-    <p>これを踏まえた良い配合例がこちら：</p>
+    <p>これを踏まえた良い配合例がこちらです。</p>
 
     <div class="img-wrap">
-      <img src="https://i.imgur.com/06jmmdu.png" alt="シュガーハート × グラスワンダー" loading="lazy">
-      <div class="caption">シュガーハート × グラスワンダー ― スピード因子も豊富で好相性</div>
+      <img src="https://i.imgur.com/06jmmdu.png" alt="シュガーハート × グラスワンダー" loading="lazy" onclick="openModal(this)">
+      <div class="caption">シュガーハート × グラスワンダー ― スピード因子も豊富で好相性（クリックで拡大）</div>
     </div>
   </section>
 
@@ -523,8 +623,9 @@
 
     <ol class="step-list">
       <li><strong>使いたい種牡馬と親系統が被っていない</strong>母馬を選ぶ</li>
-      <li>繁殖牝馬の<strong>父親に<span class="badge badge-gold">金</span>または<span class="badge badge-silver">銀</span>因子</strong>が付いている<br>
-        <span style="font-size:0.85rem;color:#7a8a9a;">→ 母父に因子があると爆発力にボーナスが付きます</span>
+      <li>
+        <strong>繁殖牝馬の父親に<span class="badge badge-gold">金</span>または<span class="badge badge-silver">銀</span>因子が付いている</strong>
+        <div class="note">→ 母父に因子があると爆発力にボーナスが付きます</div>
       </li>
     </ol>
 
@@ -541,7 +642,8 @@
       <div class="qa">
         <div class="qa-q">Q. 能力因子って何？</div>
         <div class="qa-a">
-          血統表に表示されているスピード・パワー・瞬発力などの印のこと。特定の条件を満たすと子供に継承され、能力が強化されます。
+          <p>血統表に表示されているスピード・パワー・瞬発力などの印のことです。</p>
+          <p>特定の条件を満たすと子供に継承され、能力が強化されます。</p>
         </div>
       </div>
     </div>
@@ -559,7 +661,7 @@
     </table>
 
     <h3 class="sub-title">小活性（1段階強化）の条件</h3>
-    <p>以下のいずれかを満たすと発動します。</p>
+    <p>以下の<strong>いずれか</strong>を満たすと発動します。</p>
     <ul>
       <li>親が<strong>3代連続</strong>で同じ能力因子を持っている</li>
       <li><strong>父と母</strong>が同じ能力因子を持っている</li>
@@ -582,11 +684,17 @@
         <tbody>
           <tr>
             <td>3代前の牡馬<strong>3頭</strong>が同じ因子</td>
-            <td>共通因子が<span class="hl-green">小活性</span>、残り1頭の因子もすべて<span class="hl-green">小活性</span></td>
+            <td>
+              共通因子が <span class="hl-green">小活性</span><br>
+              残り1頭の因子もすべて <span class="hl-green">小活性</span>
+            </td>
           </tr>
           <tr>
             <td>3代前の牡馬<strong>4頭</strong>が同じ因子</td>
-            <td>共通因子が<span class="highlight">大活性</span>、各馬のその他因子もすべて<span class="hl-green">小活性</span></td>
+            <td>
+              共通因子が <span class="highlight">大活性</span><br>
+              各馬のその他因子もすべて <span class="hl-green">小活性</span>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -600,16 +708,19 @@
     <p>先ほどのシュガーハートの配合で、因子の活性化を確認してみましょう。</p>
 
     <div class="img-wrap">
-      <img src="https://i.imgur.com/LDYOMFc.png" alt="シュガーハート × グラスワンダー（能力因子表示）" loading="lazy">
-      <div class="caption">配合時の能力因子の表示</div>
+      <img src="https://i.imgur.com/LDYOMFc.png" alt="シュガーハート × グラスワンダー（能力因子表示）" loading="lazy" onclick="openModal(this)">
+      <div class="caption">配合時の能力因子の表示（クリックで拡大）</div>
     </div>
 
     <div class="card card-accent">
       <p><strong>この配合で発生する活性化：</strong></p>
       <ul>
-        <li>父親が<strong>4代連続でスピード因子</strong> → <span class="highlight">スピード大活性</span></li>
-        <li>父と母父・父父と母父でスピードが共通 → さらにスピードを補強</li>
-        <li>3代前のうち3頭がスピード共通、残り1頭がパワー → <span class="hl-green">パワー小活性</span></li>
+        <li>父親が<strong>4代連続でスピード因子</strong>
+          <br><span class="summary-arrow">→</span> <span class="highlight">スピード 大活性</span></li>
+        <li>父と母父・父父と母父でスピードが共通
+          <br><span class="summary-arrow">→</span> さらにスピードを補強</li>
+        <li>3代前のうち3頭がスピード共通、残り1頭がパワー
+          <br><span class="summary-arrow">→</span> <span class="hl-green">パワー 小活性</span></li>
       </ul>
     </div>
 
@@ -626,25 +737,28 @@
       <li>3代前に<strong>スピード・瞬発・パワー</strong>のどれかを持つ</li>
     </ul>
 
-    <p>この条件に合う例：</p>
+    <p>この条件に合う例がこちらです。</p>
 
     <div class="img-wrap">
-      <img src="https://i.imgur.com/FMhbrDJ.png" alt="シュガーハート × トウカイテイオー" loading="lazy">
-      <div class="caption">シュガーハート × トウカイテイオー</div>
+      <img src="https://i.imgur.com/FMhbrDJ.png" alt="シュガーハート × トウカイテイオー" loading="lazy" onclick="openModal(this)">
+      <div class="caption">シュガーハート × トウカイテイオー（クリックで拡大）</div>
     </div>
 
     <div class="card card-accent">
       <p><strong>この配合で活性化する能力：</strong></p>
       <ul>
-        <li>父と母父、父父と母父で勝負根性が小活性 × 2 → <span class="highlight">勝負根性 大活性</span></li>
-        <li>父父と母父でスピードが共通 → <span class="hl-green">スピード 小活性</span></li>
-        <li>3代前で瞬発力が3頭共通 → <span class="hl-green">瞬発力 小活性</span> + <span class="hl-green">パワー 小活性</span></li>
+        <li>父と母父、父父と母父で勝負根性が小活性 × 2
+          <br><span class="summary-arrow">→</span> <span class="highlight">勝負根性 大活性</span></li>
+        <li>父父と母父でスピードが共通
+          <br><span class="summary-arrow">→</span> <span class="hl-green">スピード 小活性</span></li>
+        <li>3代前で瞬発力が3頭共通
+          <br><span class="summary-arrow">→</span> <span class="hl-green">瞬発力 小活性</span> + <span class="hl-green">パワー 小活性</span></li>
       </ul>
     </div>
 
     <div class="card card-warn">
-      <p>しかし、今度は<span class="badge badge-gold">金</span><span class="badge badge-silver">銀</span>因子が足りなくなりました。<br>
-      <strong>能力因子を優先するか、金銀因子を優先するか</strong> ― この折り合いをどうつけるかが配合の奥深さです。</p>
+      <p>しかし、今度は <span class="badge badge-gold">金</span> <span class="badge badge-silver">銀</span> 因子が足りなくなりました。</p>
+      <p><strong>能力因子を優先するか、金銀因子を優先するか</strong> ― この折り合いをどうつけるかが配合の奥深さです。</p>
     </div>
   </section>
 
@@ -652,16 +766,13 @@
   <section id="more">
     <h2 class="section-title">もっと詳しく知りたい人へ</h2>
 
-    <p>もっと深い配合理論（インブリード、ニックス、SP/ST系配合など）を知りたい方は、以下のリソースがおすすめです。</p>
+    <p>もっと深い配合理論（インブリード、ニックス、SP/ST系配合など）を知りたい方は、以下を参考にしてみてください。</p>
 
     <div class="card">
       <p><strong>動画で学ぶ</strong></p>
-      <a class="cta-link" href="https://www.nicovideo.jp/watch/sm45533935" target="_blank" rel="noopener noreferrer nofollow">ニコニコ動画で解説を見る →</a>
-    </div>
-
-    <div class="card" style="margin-top: 16px;">
-      <p><strong>テキストで学ぶ</strong></p>
-      <a class="cta-link" href="https://wikiwiki.jp/sppenpen/%E9%85%8D%E5%90%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" target="_blank" rel="noopener noreferrer nofollow">配合について - Wiki →</a>
+      <div class="video-embed">
+        <iframe src="https://embed.nicovideo.jp/watch/sm45533935" allowfullscreen></iframe>
+      </div>
     </div>
   </section>
 
@@ -671,6 +782,33 @@
   <p>このページは検索エンジンにインデックスされません。</p>
   <p>ウイニングポスト 配合理論 ライトユーザー向けガイド</p>
 </footer>
+
+<!-- 画像拡大モーダル -->
+<div class="modal-overlay" id="imgModal" onclick="closeModal()">
+  <button class="modal-close" onclick="closeModal()" aria-label="閉じる">&times;</button>
+  <img id="modalImg" src="" alt="">
+</div>
+
+<script>
+function openModal(imgEl) {
+  var modal = document.getElementById('imgModal');
+  var modalImg = document.getElementById('modalImg');
+  modalImg.src = imgEl.src;
+  modalImg.alt = imgEl.alt;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  var modal = document.getElementById('imgModal');
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
 
 </body>
 </html>
